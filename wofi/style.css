@@ -1,0 +1,14 @@
+/* Padding around the whole window */
+#window {
+    padding: 10px;
+}
+
+/* Padding inside the input box */
+#input {
+    margin: 10px;
+}
+
+/* Padding around each entry (app list item) */
+#entry {
+    margin: 4px 10px;
+}
