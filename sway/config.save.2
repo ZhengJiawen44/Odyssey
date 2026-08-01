@@ -4,11 +4,8 @@ default_border pixel 3
 client.focused #285577 #285577 #ffffff #285577 #285577
 exec clash-party
 exec nm-applet
-exec blueman-applet
 bindsym $mod+e exec nautilus
 set $menu wofi --show drun | xargs swaymsg exec --
-bindsym $mod+s exec grimshot save area
-bindsym $mod+c exec hyprpicker -a -f hex
 
 # Default config for sway
 #
@@ -36,7 +33,7 @@ include /etc/sway/config-vars.d/*
 # This is commented in Debian, because the Sway wallpaper files are in a separate
 # package `sway-backgrounds`. Installing this package drops a config file to
 # /etc/sway/config.d/
-output * bg /home/zjw/.config/wallpaper/thunderstorm-sea.png fill
+ output * bg /home/zjw/.config/wallpaper/thunderstorm-sea.png fill
 #
 # Example configuration:
 #
@@ -161,7 +158,7 @@ output * bg /home/zjw/.config/wallpaper/thunderstorm-sea.png fill
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    #bindsym $mod+s layout stacking
+    bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
 
     # Make the current focus fullscreen

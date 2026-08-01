@@ -1,6 +1,7 @@
 /* Padding around the whole window */
 #window {
-    padding: 10px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 /* Padding inside the input box */
@@ -12,3 +13,4 @@
 #entry {
     margin: 4px 10px;
 }
+
