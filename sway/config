@@ -5,10 +5,17 @@ client.focused #285577 #285577 #ffffff #285577 #285577
 exec clash-party
 exec nm-applet
 exec blueman-applet
+# policykit-1-gnome SIGSEGVs on Sway/Wayland; use mate-polkit instead
+exec /usr/libexec/polkit-mate-authentication-agent-1
 bindsym $mod+e exec nautilus
 set $menu wofi --show drun | xargs swaymsg exec --
 bindsym $mod+s exec grimshot save area
 bindsym $mod+c exec hyprpicker -a -f hex
+# Media keys (scripts avoid fragile quoting in bindsym)
+bindsym --locked F5 exec ~/.config/sway/bin/vol-down
+bindsym --locked F6 exec ~/.config/sway/bin/vol-up
+bindsym --locked F7 exec ~/.config/sway/bin/bright-down
+bindsym --locked F8 exec ~/.config/sway/bin/bright-up
 
 # Default config for sway
 #
@@ -214,14 +221,14 @@ bindsym $mod+r mode "resize"
 #
 # Utilities:
 #
-    # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-    # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special keys to adjust volume via PipeWire (wpctl)
+    bindsym --locked XF86AudioMute exec wpctl set-mute \@DEFAULT_AUDIO_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec ~/.config/sway/bin/vol-down
+    bindsym --locked XF86AudioRaiseVolume exec ~/.config/sway/bin/vol-up
+    bindsym --locked XF86AudioMicMute exec wpctl set-mute \@DEFAULT_AUDIO_SOURCE@ toggle
+    # Brightness via logind helpers
+    bindsym --locked XF86MonBrightnessDown exec ~/.config/sway/bin/bright-down
+    bindsym --locked XF86MonBrightnessUp exec ~/.config/sway/bin/bright-up
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 

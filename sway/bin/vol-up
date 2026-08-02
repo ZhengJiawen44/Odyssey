@@ -1,0 +1,5 @@
+#!/bin/sh
+wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf "%d", $2 * 100}')
+notify-send -t 1000 -h string:x-dunst-stack-tag:volume \
+  "Volume" "<span font='20'>${vol}%</span>"

@@ -1,0 +1,14 @@
+#!/bin/sh
+b=/sys/class/backlight/intel_backlight
+m=$(cat "$b/max_brightness")
+c=$(cat "$b/brightness")
+step=$((m * 5 / 100))
+n=$((c + step))
+[ "$n" -gt "$m" ] && n=$m
+sid=$(loginctl | awk -v u="$(id -un)" '$3==u {print $1; exit}')
+gdbus call --system --dest org.freedesktop.login1 \
+  --object-path /org/freedesktop/login1/session/"$sid" \
+  --method org.freedesktop.login1.Session.SetBrightness backlight intel_backlight "$n" >/dev/null
+pct=$((n * 100 / m))
+notify-send -t 1000 -h string:x-dunst-stack-tag:brightness \
+  "Brightness" "<span font='20'>${pct}%</span>"
