@@ -1,6 +1,9 @@
-width=400
-height=350
+width=600
+dynamic_line=true
+lines=7
 mode=drun
+allow_images=true
+image_size=32
 colors=colors
 filter_rate=100
 allow_markup=true
@@ -9,3 +12,4 @@ halign=fill
 orientation=vertical
 content_halign=fill
 drun-display_generic=true
+

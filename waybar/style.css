@@ -53,8 +53,8 @@ window#waybar.hidden {
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
-  color: #1e1e2e;
-  background-color: @accent-olive;
+  color: white;
+  background-color: transparent;
 }
 
 #workspaces button.urgent {
@@ -69,10 +69,17 @@ window#waybar.hidden {
 #network,
 #bluetooth,
 #clock,
+#pulseaudio,
 #tray {
   padding: 0px 12px;
   color: white;
 }
+
+#custom-separator {
+  padding: 0 4px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
 
 #custom-power {
   margin-right: 6px;
@@ -87,7 +94,7 @@ window#waybar.hidden {
   color: #1793d1;
 }
 
-/*#battery.warning,
+#battery.warning,
 #battery.critical,
 #battery.urgent {
   background-color: #ff0000;
@@ -98,7 +105,7 @@ window#waybar.hidden {
   background-color: #a6e3a1;
   color: #181825;
 }
-*/
+
 
 
 

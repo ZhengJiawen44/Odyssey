@@ -7,10 +7,11 @@
   
     "modules-right": [
         "tray",
+        "custom/separator",
+        "pulseaudio",
         "memory",
-        "network",
         "battery",
-	"clock",
+        "clock"
     ],
     "wlr/taskbar": {
         "format": "{icon}",
@@ -45,19 +46,26 @@
             "5": []
         }
     },
+
+    "pulseaudio": {
+	"format": "VOL {volume}%"
+    },
     "memory": {
         "interval": 5,
         "format": "MEM {}%",
         "max-length": 10
     },
     "tray": {
-        "spacing": 10
+        "spacing": 15
+    },
+    "custom/separator": {
+        "format": "|",
+        "tooltip": false
     },
     "clock": {
 	"tooltip": false,
         "tooltip-format": "{calendar}",
-        "format-alt": "  {:%a, %d %b %Y}",
-        "format": "{:%d %b %Y :%I:%M %p}"
+        "format": "{:%d %b %Y   %I:%M %p}"
     },
     "network": {
     "on-click": "~/.config/wofi/scripts/wofi-wifi",
@@ -106,7 +114,7 @@
                 "󰁹"
             ]
         },
-        "format-full": "100%",
+        "format-full": "CHG 100%",
         "interval": 5,
         "states": {
             "warning": 20,
