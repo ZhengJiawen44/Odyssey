@@ -35,8 +35,8 @@
             "7": "7",
             "8": "8",
             "9": "9",
-            "active": "󱓻",
-            "urgent": "󱓻"
+            "active": "+",
+            
         },
         "persistent-workspaces": {
             "1": [],
@@ -48,12 +48,14 @@
     },
 
     "pulseaudio": {
-	"format": "VOL {volume}%"
+	"format": "VOL {volume}%",
+	"on-click": "pavucontrol",
     },
     "memory": {
         "interval": 5,
         "format": "MEM {}%",
-        "max-length": 10
+        "max-length": 10,
+        "on-click": "foot -e btop"
     },
     "tray": {
         "spacing": 15
@@ -64,6 +66,7 @@
     },
     "clock": {
 	"tooltip": false,
+        "on-click": "gnome-calendar",
         "tooltip-format": "{calendar}",
         "format": "{:%d %b %Y   %I:%M %p}"
     },
@@ -120,7 +123,8 @@
             "warning": 20,
             "critical": 10
         },
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/power-profile.sh"
     },
     "custom/power": {
         "format": "⏻",
@@ -134,5 +138,5 @@
         "disabled": ""
     },
     "on-click": "~/.config/wofi/scripts/wofi-bluetooth"
-}
+  },
 }

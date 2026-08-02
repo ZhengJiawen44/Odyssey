@@ -7,6 +7,9 @@ exec nm-applet
 exec blueman-applet
 # policykit-1-gnome SIGSEGVs on Sway/Wayland; use mate-polkit instead
 exec /usr/libexec/polkit-mate-authentication-agent-1
+# Chinese input (Fcitx5)
+exec fcitx5 -d
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY GTK_IM_MODULE QT_IM_MODULE XMODIFIERS
 bindsym $mod+e exec nautilus
 set $menu wofi --show drun | xargs swaymsg exec --
 bindsym $mod+s exec grimshot save area

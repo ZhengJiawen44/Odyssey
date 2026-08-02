@@ -1,0 +1,15 @@
+[Hotkey]
+TriggerKeys=
+# Enumerate when press trigger key while being temporarily disabled
+EnumerateWhenAltJustPressed=True
+
+[Hotkey/TriggerKeys]
+0=Control+space
+
+[Behavior]
+# Active By Default
+ActiveByDefault=False
+# Share Input State
+ShareInputState=No
+# Show preedit in application
+PreeditInApplication=True
