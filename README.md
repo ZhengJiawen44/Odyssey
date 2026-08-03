@@ -1,6 +1,6 @@
 yet another rice with sway, this time focusing on simplicity and reliability. 
 
-![demo picture](/main.png)
+![demo picture](/demo.png)
 ![demo picture](/editor.png)
 
 once again,
