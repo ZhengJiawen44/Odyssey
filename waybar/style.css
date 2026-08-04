@@ -77,6 +77,19 @@ window#waybar.hidden {
   color: white;
 }
 
+#memory:hover,
+#custom-power:hover,
+#battery:hover,
+#backlight:hover,
+#wireplumber:hover,
+#network:hover,
+#bluetooth:hover,
+#clock:hover,
+#pulseaudio:hover {
+  background-color: #373b3c;
+  color: white;
+}
+
 #custom-separator {
   padding: 0 4px;
   color: rgba(255, 255, 255, 0.35);
