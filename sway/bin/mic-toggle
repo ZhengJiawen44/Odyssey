@@ -1,0 +1,29 @@
+#!/bin/sh
+# Mute/unmute ALL PipeWire capture sources.
+# This laptop has Stereo Mic + Digital Mic; apps may use either.
+
+ids=$(pw-dump | jq -r '
+  .[]
+  | select(.type == "PipeWire:Interface:Node")
+  | select(.info.props["media.class"] == "Audio/Source")
+  | .id
+')
+
+if [ -z "$ids" ]; then
+  notify-send -t 2000 -h string:x-dunst-stack-tag:mic "Microphone" "No input devices found"
+  exit 1
+fi
+
+# Decide target from default source, then apply to every source.
+state=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
+case "$state" in
+  *MUTED*) want_mute=0; label="Unmuted" ;;
+  *)       want_mute=1; label="Muted" ;;
+esac
+
+for id in $ids; do
+  wpctl set-mute "$id" "$want_mute"
+done
+
+notify-send -t 1500 -h string:x-dunst-stack-tag:mic \
+  "Microphone" "<span font='20'>${label}</span>"
