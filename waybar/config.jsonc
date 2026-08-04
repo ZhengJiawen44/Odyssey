@@ -11,7 +11,8 @@
         "pulseaudio",
         "memory",
         "battery",
-        "clock"
+        "clock",
+        "custom/power"
     ],
     "wlr/taskbar": {
         "format": "{icon}",
@@ -25,7 +26,7 @@
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-            "default": "",
+            "default": "0",
             "1": "1",
             "2": "2",
             "3": "3",
@@ -39,11 +40,7 @@
             
         },
         "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
+            "1": []
         }
     },
 
@@ -68,7 +65,7 @@
 	"tooltip": false,
         "on-click": "gnome-calendar",
         "tooltip-format": "{calendar}",
-        "format": "{:%d %b %Y   %I:%M %p}"
+        "format": "{:%I:%M %p  %d %b %Y}"
     },
     "network": {
     "on-click": "~/.config/wofi/scripts/wofi-wifi",
@@ -127,9 +124,9 @@
         "on-click": "~/.config/waybar/scripts/power-profile.sh"
     },
     "custom/power": {
-        "format": "⏻",
+        "format": "POW",
         "tooltip": false,
-        "on-click": "~/.config/hypr/scripts/Wlogout.sh"
+        "on-click": "~/.config/waybar/scripts/power-menu.sh"
     },
   "bluetooth": {
     "format": "{icon}",
