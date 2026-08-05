@@ -6,12 +6,20 @@ choice=$(
     if [ "$p" = "$current" ]; then
       printf '> %s\n' "$p"
     else
-      printf '   %s\n' "$p"
+      printf '  %s\n' "$p"
     fi
   done |
-  wofi --dmenu --prompt "Power profile" --width 280 --lines 3
+  wofi --dmenu --hide-search --prompt "Power profile" --width 280 --lines 3 \
+    --style ~/.config/wofi/power-menu.css
 )
 [ -z "$choice" ] && exit 0
-profile=${choice#* }
-powerprofilesctl set "$profile"
-notify-send -t 1500 "Power profile" "$profile"
+
+# Strip marker/spaces so "  power-saver" / "> balanced" become a clean name
+profile=$(printf '%s' "$choice" | sed 's/^[^A-Za-z0-9]*//')
+[ -z "$profile" ] && exit 0
+
+if powerprofilesctl set "$profile"; then
+  notify-send -t 1500 "Power profile" "$profile"
+else
+  notify-send -t 2500 "Power profile" "Failed to set $profile"
+fi
